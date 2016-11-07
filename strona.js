@@ -14,11 +14,11 @@ var checkCheckedFields = function() {
         var elementId = $(this).attr('id');
         if(localStorage.getItem(elementId) == "true") {$(this).attr("checked",true);};
     })
-
 }
 
 var colorCheckedFields = function() {
     checkCheckedFields();
+    saveFormToLocalStorage();
 	$('input').each(function(a,b){ if(a.checked){a.parentNode.className = "labelClass color"}});
 	var inputsChecked = $('input:checked');
 	var inputsNotChecked = $('input:radio:not(:checked)');
@@ -28,6 +28,13 @@ var colorCheckedFields = function() {
 	for (var i = 0; i< inputsNotChecked.length; i++) {
 		inputsNotChecked[i].parentNode.classList = ["labelClass"];
 	}
+}
+
+var saveFormToLocalStorage = function() {
+        $('input').each(function(a,b){
+            var elementId = $(this).attr('id');
+            if(a.checked){localStorage.setItem(elementId, JSON.stringify((document.getElementById(elementId)).checked))}
+        })
 }
 
 var changeColor = function() {
