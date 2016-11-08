@@ -17,7 +17,7 @@ label {
 	flex: 0 45% 45%;
 }
 #right {
-	flex: 0;
+	flex: 0 45% 45%;
 }
 
 .colorText {
